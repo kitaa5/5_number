@@ -1,0 +1,19 @@
+# Temporary files with suffix ~
+*~
+
+# Gradle service files
+.gradle/
+
+# Build files
+build/
+
+# Gradle wrapper (optional, but commonly ignored)
+.gradlew/
+
+# IDE files (optional, but commonly ignored)
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+

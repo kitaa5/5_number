@@ -27,4 +27,47 @@ public class AggregatorTest {
         agr.addValue(val);
         assertThat(agr.getSum()).isEqualTo(val * 2);
     }
+
+    @Test
+    public void testReset() {
+        Aggregator agr = new Aggregator();
+        agr.addValue(10.5);
+        agr.addValue(20.3);
+        assertThat(agr.getSum()).isEqualTo(30.8);
+        agr.reset();
+        assertThat(agr.getSum()).isZero();
+    }
+
+    @Test
+    public void testResetAndContinue() {
+        Aggregator agr = new Aggregator();
+        agr.addValue(10);
+        agr.reset();
+        agr.addValue(5);
+        assertThat(agr.getSum()).isEqualTo(5);
+    }
+
+    @Test
+    public void testAddNegativeValues() {
+        Aggregator agr = new Aggregator();
+        agr.addValue(10);
+        agr.addValue(-5);
+        assertThat(agr.getSum()).isEqualTo(5);
+    }
+
+    @Test
+    public void testAddZero() {
+        Aggregator agr = new Aggregator();
+        agr.addValue(10);
+        agr.addValue(0);
+        assertThat(agr.getSum()).isEqualTo(10);
+    }
+
+    @Test
+    public void testAddDecimalValues() {
+        Aggregator agr = new Aggregator();
+        agr.addValue(1.5);
+        agr.addValue(2.7);
+        assertThat(agr.getSum()).isEqualTo(4.2);
+    }
 }
